@@ -29,7 +29,7 @@ COPY jenkins-slave /usr/local/bin/jenkins-slave
 USER root
 
 RUN apt-get install -y python \
-  python-devel \
+  python-dev \
   python-openssl \
   libssl \
   libssl-dev \
