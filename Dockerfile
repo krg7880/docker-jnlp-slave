@@ -48,11 +48,11 @@ RUN pip install --upgrade pip cffi Scrapy pyopenssl
 RUN curl https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-130.0.0-linux-x86_64.tar.gz -o /tmp/google-cloud-sdk.tar.gz \
   && tar -zxvf /tmp/google-cloud-sdk.tar.gz \
   && ls -lart && ls -lart /tmp \
-  && /google-cloud-sdk/install.sh -q 
+  && /home/jenkins/google-cloud-sdk/install.sh -q 
 
 ADD ./accounts.json /root/.gcp/accounts.json
 
-RUN echo "${PWD}" && CLOUDSDK_PYTHON_SITEPACKAGES=1 ./google-cloud-sdk/bin/gcloud auth activate-service-account "jenkins@JENKINS_SVC_ACCOUNT" --key-file /root/.gcp/accounts.json
+RUN echo "${PWD}" && CLOUDSDK_PYTHON_SITEPACKAGES=1 /home/jenkins/google-cloud-sdk/bin/gcloud auth activate-service-account "jenkins@JENKINS_SVC_ACCOUNT" --key-file /root/.gcp/accounts.json
 
 USER jenkins
 ENTRYPOINT ["jenkins-slave"]
