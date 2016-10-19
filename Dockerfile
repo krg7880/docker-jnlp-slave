@@ -44,6 +44,8 @@ RUN apt-get install -y python \
 
 RUN pip install --upgrade pip cffi Scrapy pyopenssl
 
+RUN echo "${PWD}" && ls -lart && ls -lart /tmp
+
 # install gcloud sdk
 RUN curl https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-130.0.0-linux-x86_64.tar.gz -o /tmp/google-cloud-sdk.tar.gz \
   && tar -zxvf /tmp/google-cloud-sdk.tar.gz \
