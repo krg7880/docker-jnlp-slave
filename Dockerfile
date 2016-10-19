@@ -29,6 +29,7 @@ COPY jenkins-slave /usr/local/bin/jenkins-slave
 USER root
 
 RUN apt-get update -y
+
 RUN apt-get install -y python \
   python-dev \
   python-openssl \
@@ -41,10 +42,7 @@ RUN apt-get install -y python \
   libffi6 \
   libffi-dev
 
-RUN pip install --upgrade pip 
-RUN pip install --upgrade cffi 
-RUN pip install --upgrade Scrapy 
-RUN pip install --upgrade pyopenssl
+RUN pip install --upgrade pip cffi Scrapy pyopenssl
 
 # install gcloud sdk
 RUN curl https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-130.0.0-linux-x86_64.tar.gz -o /tmp/google-cloud-sdk.tar.gz \
