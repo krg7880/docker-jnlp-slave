@@ -53,7 +53,7 @@ RUN curl https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud
 # The build process should generate accounts.json with the GCP creds
 ADD ./accounts.json /home/jenkins/.gcp/accounts.json
 
-RUN CLOUDSDK_PYTHON_SITEPACKAGES=1 /home/jenkins/google-cloud-sdk/bin/gcloud auth activate-service-account "jenkins@JENKINS_SVC_ACCOUNT" --key-file /home/jenkins/accounts.json
+RUN CLOUDSDK_PYTHON_SITEPACKAGES=1 /home/jenkins/google-cloud-sdk/bin/gcloud auth activate-service-account "jenkins@JENKINS_SVC_ACCOUNT" --key-file /home/jenkins/.gcp/accounts.json
 
 RUN chown -R jenkins: /home/jenkins
 
