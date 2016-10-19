@@ -28,6 +28,7 @@ COPY jenkins-slave /usr/local/bin/jenkins-slave
 
 USER root
 
+RUN apt-get update -y
 RUN apt-get install -y python \
   python-dev \
   python-openssl \
