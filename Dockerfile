@@ -41,8 +41,8 @@ RUN apt-get install -y python \
   libffi6 \
   libffi-dev
 
-RUN pip install --upgrade cffi 
 RUN pip install --upgrade pip 
+RUN pip install --upgrade cffi 
 RUN pip install --upgrade Scrapy 
 RUN pip install --upgrade pyopenssl
 
