@@ -32,7 +32,6 @@ RUN apt-get update -y
 RUN apt-get install -y python \
   python-dev \
   python-openssl \
-  libssl \
   libssl-dev \
   python-pip \
   gcc \
