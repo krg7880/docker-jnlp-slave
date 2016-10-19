@@ -42,6 +42,8 @@ RUN apt-get install -y python \
   libffi6 \
   libffi-dev
 
+USER jenkins
+
 RUN pip install --upgrade pip cffi Scrapy pyopenssl
 
 # install gcloud sdk
@@ -50,9 +52,8 @@ RUN curl https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud
   && ls -lart && ls -lart /tmp \
   && /home/jenkins/google-cloud-sdk/install.sh -q 
 
-ADD ./accounts.json /root/.gcp/accounts.json
+ADD ./accounts.json "${HOME}/.gcp/accounts.json"
 
-RUN echo "${PWD}" && CLOUDSDK_PYTHON_SITEPACKAGES=1 /home/jenkins/google-cloud-sdk/bin/gcloud auth activate-service-account "jenkins@JENKINS_SVC_ACCOUNT" --key-file /root/.gcp/accounts.json
+RUN CLOUDSDK_PYTHON_SITEPACKAGES=1 /home/jenkins/google-cloud-sdk/bin/gcloud auth activate-service-account "jenkins@JENKINS_SVC_ACCOUNT" --key-file "${HOME}/.gcp/accounts.json"
 
-USER jenkins
 ENTRYPOINT ["jenkins-slave"]
