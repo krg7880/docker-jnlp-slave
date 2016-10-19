@@ -31,15 +31,15 @@ USER root
 RUN apt-get install -y python \
   python-devel \
   python-openssl \
-  openssl \
-  openssl-devel \
-  pip \
+  libssl \
+  libssl-dev \
+  python-pip \
   gcc \
-  musl-devel \
-  libxml2 \
-  libxml2-devel \
-  libxslt-devel \
-  libffi-devel
+  libxml2-dev \
+  libxslt1-dev \
+  python-dev \
+  libffi6 \
+  libffi-dev
 
 RUN pip install --upgrade pip \
   && pip install --upgrade Scrapy
